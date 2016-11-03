@@ -13,6 +13,8 @@ import os
 import atexit
 import time
 
+import matplotlib.pyplot as plt
+
 _browser = None
 
 def plot(L, scale=4, dot_size = 3, browser=None, dir=None):
@@ -56,6 +58,24 @@ def plot(L, scale=4, dot_size = 3, browser=None, dir=None):
         browser = _browser
     webbrowser.get(browser).open('file://%s' % hpath)
     time.sleep(2.0)
+
+
+def plot2(seq, rev=False, range=8):
+    seq = [(x.real, x.imag) for x in seq]
+    xs = [x[0] for x in seq]
+    ys = [x[1] for x in seq]
+    if rev:
+        plt.scatter(ys, xs, s=8.0)
+    else:
+        plt.scatter(xs, ys, s=8.0)
+
+    plt.xlim(-range, range)
+    plt.ylim(-range, range)
+    plt.axis('square')
+    plt.annotate('figure pixels')
+
+    plt.show()
+
 
 def setbrowser(browser=None):
     """ Registers the given browser and saves it as the module default.
