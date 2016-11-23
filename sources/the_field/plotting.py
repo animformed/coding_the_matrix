@@ -71,8 +71,8 @@ def plot2(seq, rev=False, range=8):
 
     plt.xlim(-range, range)
     plt.ylim(-range, range)
-    plt.axis('square')
-    plt.annotate('figure pixels')
+    plt.axis('image')
+    #plt.annotate('figure pixels')
 
     plt.show()
 
