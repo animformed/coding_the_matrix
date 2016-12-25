@@ -64,15 +64,16 @@ def plot2(seq, rev=False, range=8):
     seq = [(x.real, x.imag) for x in seq]
     xs = [x[0] for x in seq]
     ys = [x[1] for x in seq]
+    area = max(xs) * max(ys)
+    max_range = max(max(xs), max(ys), 1) * 1.2
+    min_range = min(min(xs), min(ys), 0) * 1.2
     if rev:
-        plt.scatter(ys, xs, s=8.0)
+        plt.scatter(ys, xs, s=5)
     else:
-        plt.scatter(xs, ys, s=8.0)
+        plt.scatter(xs, ys, s=5)
 
-    plt.xlim(-range, range)
-    plt.ylim(-range, range)
-    plt.axis('image')
-    #plt.annotate('figure pixels')
+    plt.xlim(min_range, max_range)
+    plt.ylim(min_range, max_range)
 
     plt.show()
 
